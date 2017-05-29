@@ -17,8 +17,8 @@ class ContainerView: UIView, UIGestureRecognizerDelegate {
     var savedTransform: CATransform3D = CATransform3DIdentity
     var tapRecognizer: UITapGestureRecognizer!
 
-    init(frame: CGRect, parentView: SwitherView){
-        self.parentView = parenView
+    init(frame: CGRect, parentView: SwitcherView){
+        self.parentView = parentView
         super.init(frame: frame)
         self.parentView = parentView
         savedOriginY = frame.origin.y
@@ -74,7 +74,7 @@ class ContainerView: UIView, UIGestureRecognizerDelegate {
     func toggleAnimation(){
         isFullScreen = !isFullScreen
         parentView.animate(view: self, isFullScreen: isFullScreen)
-        parentView.scrollView.isEnabled = !isFullScreen
+        parentView.scrollView.isScrollEnabled = !isFullScreen
         
         if !SwitcherView.enableUserInteractionInSwitcher {
             for subView in subviews {
